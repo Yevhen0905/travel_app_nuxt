@@ -16,13 +16,12 @@
   <section class="experiences">
       <h2>Top Experiences in {{ destination.name }}</h2>
       <div class="cards">
-        <NuxtLink
+        <div
           v-for="experience in destination.experiences"
-          :key="experience.slug"
-          :to="'/destination/experience/' + experience.slug"
+    
         >
           <ExperienceCard :experience="experience" />
-        </NuxtLink>
+        </div>
       </div>
       <slot />
     </section>
@@ -33,7 +32,7 @@ import sourceData from "@/data.json";
 import { computed } from "vue";
 const route = useRoute();
 const id = route.params.id;
-console.log(id);
+// console.log(id);
 
 const destination = computed(() =>
   sourceData.destinations.find((destination) => destination.id === parseInt(id))
